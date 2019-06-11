@@ -4,7 +4,6 @@
     <title>Horizonsplatform</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -16,19 +15,41 @@
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-    <ul class="nav">
-      <li class="active"><a href="/proposals">Proposals</a></li>
-    </ul>
-    <p class="navbar-text pull-right">
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
-</p>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/proposals/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Proposals
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/proposals/new/">Add Proposal</a>
+          <a class="dropdown-item" href="/proposals/">All Proposals</a>
+          <a class="dropdown-item" href="/proposals/">My Proposals</a>
+        </li>
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            My Profile
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to 'Edit Profile', edit_user_registration_path, :class => 'dropdown-item' %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item'  %>
+          </li>
+        <% else %>
+        <li class="nav-item">
+          <%= link_to "Login", new_user_session_path, :class => 'nav-link'  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link'  %>
+        </li>
+        <% end %>
+
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>

@@ -10,14 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_08_025016) do
+ActiveRecord::Schema.define(version: 2019_06_11_073711) do
 
   create_table "proposals", force: :cascade do |t|
     t.string "title"
-    t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.string "headquarters"
+    t.string "operations"
+    t.string "email"
+    t.string "sector"
+    t.string "sub_sector"
+    t.integer "potential_stake_offered"
+    t.string "types_of_acquirers"
+    t.text "reason_for_sale"
+    t.decimal "revenue"
+    t.decimal "ebitda"
+    t.decimal "net_income"
+    t.string "your_role"
+    t.boolean "exclusive_mandate"
+    t.boolean "social_impact"
+    t.text "additional_description"
     t.index ["user_id"], name: "index_proposals_on_user_id"
   end
 
