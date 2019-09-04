@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :proposals
 
   root 'home#index'
+
 end

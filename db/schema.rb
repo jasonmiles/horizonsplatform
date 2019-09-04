@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_11_073711) do
+ActiveRecord::Schema.define(version: 2019_09_04_064323) do
 
   create_table "proposals", force: :cascade do |t|
     t.string "title"
@@ -22,16 +22,18 @@ ActiveRecord::Schema.define(version: 2019_06_11_073711) do
     t.string "email"
     t.string "sector"
     t.string "sub_sector"
-    t.integer "potential_stake_offered"
+    t.string "potential_stake_offered"
     t.string "types_of_acquirers"
     t.text "reason_for_sale"
-    t.decimal "revenue"
+    t.integer "revenue"
     t.decimal "ebitda"
-    t.decimal "net_income"
+    t.integer "net_income"
     t.string "your_role"
     t.boolean "exclusive_mandate"
     t.boolean "social_impact"
     t.text "additional_description"
+    t.string "deal_type"
+    t.string "type_of_acquirers"
     t.index ["user_id"], name: "index_proposals_on_user_id"
   end
 

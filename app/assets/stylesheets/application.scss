@@ -11,5 +11,13 @@
  * It is generally better to create a new file per style scope.
  *
  */
-
+@import "chosen";
 @import "bootstrap";
+
+input, textarea {
+    max-width: 70%;
+}
+
+input.numeric {
+  max-width: 60px;
+}

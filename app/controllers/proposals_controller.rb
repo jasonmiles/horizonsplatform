@@ -14,6 +14,7 @@ class ProposalsController < ApplicationController
   def edit
     @proposal = Proposal.find(params[:id])
   end
+
   def create
     @proposal = current_user.proposals.new(proposal_params)
     if @proposal.save
@@ -43,6 +44,6 @@ class ProposalsController < ApplicationController
 
   private
     def proposal_params
-      params.require(:proposal).permit(:title, :text)
+      params.require(:proposal).permit(:title, :headquarters, :reason_for_sale, :revenue, :ebitda, :net_income, :social_impact, :additional_description, operations: [], sector: [], potential_stake_offered: [], type_of_acquirers: [], your_role: [], exclusive_mandate: [])
     end
 end

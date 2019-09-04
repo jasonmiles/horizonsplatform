@@ -1,3 +1,21 @@
 // Place all the styles related to the Proposals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+input {
+    max-width: 60%;
+}
+
+
+
+.chosen-container-multi .chosen-choices .search-choice {
+    background: none repeat scroll 0 0 #f2f4f6;
+    border: 1px solid #e0e3e7;
+    border-radius: 20px;
+    color: #6c7077;
+    font-family: proxima_novasemibold;
+    font-size: 16px;
+    line-height: 21px;
+    margin: 5px 0 5px 5px;
+    padding: 5px 33px 5px 9px;
+  }

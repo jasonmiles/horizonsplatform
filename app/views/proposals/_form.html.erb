@@ -1,32 +1,112 @@
+<%= simple_form_for @proposal, wrapper: :input_group, validate: true do |f| %>
+  <%= f.error_notification %>
 
-<%= form_with model: @proposal, local: true do |form| %>
+  <div class='label'>Please give your proposal a name</div>
+  <%= f.input :title, input_html: { :size => 10, "data-tooltip" => true, :class => "dashboard-tooltip", data: { content: 'this is the message', placement: 'top', trigger: 'hover' } }, label: false, error: 'Mandatory' %>
+  <br>
+  <h6>ABOUT THE SELLER</h6>
+  <br>
+  <div class='label'>Headquarters</div>
+  <%= f.country_select :headquarters, { include_blank: true }, { class: 'chosen-select'} %>
+  <br>
+  <br>
+  <div class='label'>Operations</div>
+  <%= f.country_select :operations, { include_blank: true }, { class: 'chosen-select', multiple: 'multiple'} %>
+  <br>
+  <br>
+  <div class='label'>Sector</div>
+  <%= f.input :sector, collection: ['Energy',
+                                    'Materials',
+                                    'Capital Goods',
+                                    'Commercial & Professional Services',
+                                    'Transportation',
+                                    'Automobiles & Components',
+                                    'Consumer Durables &amp; Apparel',
+                                    'Consumer Services',
+                                    'Media',
+                                    'Retailing',
+                                    'Food & Staples Retailing',
+                                    'Food, Beverage & Tobacco',
+                                    'Household & Personal Products',
+                                    'Health Care Equipment & Services',
+                                    'Pharmaceuticals, Biotechnology & Life Sciences',
+                                    'Banks',
+                                    'Diversified Financials',
+                                    'Insurance',
+                                    'Real Estate',
+                                    'Software & Services',
+                                    'Technology Hardware & Equipment',
+                                    'Semiconductors & Semiconductor Equipment',
+                                    'Telecommunication Services'
+                                    ],
+                        input_html: { class: 'chosen-select', multiple: 'multiple' },
+                        label: false,
+                        error: 'Mandatory'%>
+  <br>
+  <br>
+  <h6>TRANSACTION</h6>
+  <br>
+  <div class='label'>Type of acquirers</div>
+  <%= f.input :type_of_acquirers,
+             collection: ['Strategic',
+                          'Financial'],
+             input_html: { class: 'chosen-select', multiple: 'multiple' },
+             label: false,
+             error: 'Mandatory'%>
+  <br>
+  <div class='label'>Potential stake offered</div>
+  <%= f.input :potential_stake_offered,
+             collection: ['Less than 50%',
+                          'More than 50%',
+                          '100%'],
+             input_html: { class: 'chosen-select', multiple: 'multiple' },
+             label: false,
+             error: 'Mandatory'%>
+<br>
+<div class='label'>Reason for Sale</div>
+<%= f.input :reason_for_sale,
+           as: :text,
+           label: false,
+           error: 'Mandatory'%>
+<br>
+<h6>FINANCIAL DETAILS</h6>
+<br>
+<div class='label'>Revenue (Million US$)</div>
+<%= f.input :revenue, prepend: "US$", append: "M", label: false  %>
+<br>
+<div class='label'>EBITDA (Million US$)</div>
+<%= f.input :ebitda, prepend: "US$", append: "M", label: false  %>
+<br>
+<div class='label'>Net Income (Million US$)</div>
+<%= f.input :net_income, prepend: "US$", append: "M", label: false  %>
 
-  <% if @proposal.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@proposal.errors.count, "error") %> prohibited
-        this proposal from being saved:
-      </h2>
-      <ul>
-        <% @proposal.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<h6>ABOUT YOU</h6>
+<div class='label'>Your role in the transaction</div>
+<%= f.input :your_role,
+           collection: ['Advisor',
+                        'Direct Party',
+                        '100%'],
+           input_html: { class: 'chosen-select', multiple: 'multiple' },
+           label: false,
+           error: 'Mandatory'%>
 
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
+<div class='label'>Do you have an Exclusive mandate </div>
+<%= f.input :exclusive_mandate,
+           collection: ['Yes',
+                        'No'],
+           input_html: { class: 'chosen-select', multiple: 'multiple' },
+           label: false,
+           error: 'Mandatory'%>
 
-  <p>
-    <%= form.label :text %><br>
-    <%= form.text_area :text %>
-  </p>
+<div class='label'>Is this a Social Impact deal? </div>
+<%= f.input :social_impact, as: :radio_buttons %>
 
-  <p>
-    <%= form.submit %>
-  </p>
+<div class='label'>Additional description</div>
+<%= f.input :additional_description,
+           as: :text,
+           label: false,
+           error: 'Mandatory'%>
+<br>
 
+  <%= f.submit 'Submit' %>
 <% end %>
