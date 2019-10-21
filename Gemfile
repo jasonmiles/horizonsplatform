@@ -29,7 +29,7 @@ gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 gem 'country_select'
 gem 'chosen-rails'
-gem 'devise', '~> 4.6', '>= 4.6.2'
+gem 'devise', '~> 4.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
